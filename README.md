@@ -1,6 +1,6 @@
-# tegro-money-telegram
+# @tegroton/tegro-money
 
-[![npm](https://img.shields.io/npm/v/tegro-money-telegram.svg)](https://www.npmjs.com/package/tegro-money-telegram)
+[![npm](https://img.shields.io/npm/v/@tegroton/tegro-money.svg)](https://www.npmjs.com/package/@tegroton/tegro-money)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 
 Production-ready Tegro.Money integration for Telegram bots. Two helpers, zero magic:
@@ -22,9 +22,9 @@ Tegro.Money is one of the few Russian-friendly fiat acquirers that accepts cards
 ## Install
 
 ```bash
-npm install tegro-money-telegram
+npm install @tegroton/tegro-money
 # or
-pnpm add tegro-money-telegram
+pnpm add @tegroton/tegro-money
 ```
 
 Node.js ≥ 18 required (uses built-in `crypto.timingSafeEqual` and global `fetch`).
@@ -46,7 +46,7 @@ Then in the same screen set **"URL уведомлений"** (notification URL) 
 ### 2. Create an order
 
 ```ts
-import { TegroClient } from "tegro-money-telegram";
+import { TegroClient } from "@tegroton/tegro-money";
 
 const tegro = new TegroClient({
   shopId:    process.env.TEGRO_SHOP_ID!,
@@ -69,7 +69,7 @@ const { id, url } = await tegro.createOrder({
 
 ```ts
 import express from "express";
-import { verifyAndParseNotification, WebhookSignatureError } from "tegro-money-telegram";
+import { verifyAndParseNotification, WebhookSignatureError } from "@tegroton/tegro-money";
 
 const app = express();
 app.use(express.urlencoded({ extended: false })); // tegro sends form-data
@@ -244,7 +244,7 @@ Tests reproduce the PHP reference implementations from the docs verbatim and ver
 
 Because the alternative is everyone writing their own buggy MD5 logic. Take the code, ship your project. Acknowledgement nice but not required.
 
-PRs welcome at [github.com/DeFiTON/tegro-money-telegram](https://github.com/DeFiTON/tegro-money-telegram).
+PRs welcome at [github.com/DeFiTON/@tegroton/tegro-money](https://github.com/DeFiTON/@tegroton/tegro-money).
 
 ---
 

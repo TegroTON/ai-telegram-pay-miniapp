@@ -1,5 +1,5 @@
 {
-  "name": "tegro-money-telegram",
+  "name": "@tegroton/tegro-money",
   "version": "0.1.0",
   "description": "Minimal, production-ready Tegro.Money integration for Telegram bots: createOrder helper + webhook verifier + working grammY example.",
   "type": "module",
@@ -7,6 +7,7 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsc",
+    "prepublishOnly": "npm run build && npm test",
     "test": "vitest run",
     "example:bot": "tsx examples/minimal-bot.ts",
     "example:webhook": "tsx examples/express-webhook.ts"
@@ -27,13 +28,21 @@
     "payments",
     "rub",
     "sbp",
-    "fiat-onramp"
+    "fiat-onramp",
+    "tegroton"
   ],
-  "author": "DeFiTON",
+  "author": "TegroTON",
   "license": "MIT",
+  "homepage": "https://github.com/TegroTON/ai-telegram-pay-miniapp#readme",
+  "bugs": {
+    "url": "https://github.com/TegroTON/ai-telegram-pay-miniapp/issues"
+  },
   "repository": {
     "type": "git",
-    "url": "https://github.com/DeFiTON/tegro-money-telegram.git"
+    "url": "git+https://github.com/TegroTON/ai-telegram-pay-miniapp.git"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "devDependencies": {
     "@types/express": "^4.17.21",
