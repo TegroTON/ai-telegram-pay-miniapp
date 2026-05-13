@@ -1,6 +1,6 @@
 {
   "name": "@tegroton/tegro-money",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Minimal, production-ready Tegro.Money integration for Telegram bots: createOrder helper + webhook verifier + working grammY example.",
   "type": "module",
   "main": "dist/index.js",

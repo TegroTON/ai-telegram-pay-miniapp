@@ -186,6 +186,52 @@ type CreateOrderRequest = {
 
 Throws `TegroApiError` if Tegro returns `type !== "success"` or HTTP 4xx/5xx.
 
+### `client.balance(): Promise<BalanceResponse>`
+
+Returns the merchant's multi-currency wallet:
+
+```ts
+type BalanceResponse = {
+  user_id: number;
+  balance: { RUB?: string; USD?: string; EUR?: string; UAH?: string };
+};
+```
+
+Amounts are decimal strings — don't coerce to `number` if you care about accounting precision.
+
+### `client.checkOrder({ order_id } | { payment_id }): Promise<OrderRecord>`
+
+Look up one order. Pass either Tegro's `order_id` or your own `payment_id` (the value you used when calling `createOrder`).
+
+```ts
+type OrderRecord = {
+  id: number;
+  date_created: string;
+  date_payed: string | null;
+  status: number;          // 0=new 1=paid 2=failed 3=refunded
+  payment_system_id: number;
+  currency_id: number;
+  amount: string;
+  fee: string;
+  email: string;
+  test_order: 0 | 1;
+  payment_id: string;
+};
+```
+
+Use the helpers to avoid magic numbers:
+
+```ts
+import { isOrderPaid, isOrderPending, isOrderFailed, isOrderRefunded } from "@tegroton/tegro-money";
+
+const o = await client.checkOrder({ payment_id: "my-order-42" });
+if (isOrderPaid(o)) creditUser(o.payment_id, Number(o.amount));
+```
+
+### `client.listOrders({ page? }): Promise<{ items: OrderRecord[] }>`
+
+Paginated list of recent orders (page defaults to 1, server-side page size).
+
 ### `verifyAndParseNotification(rawFields, secretKey): VerifiedNotification`
 
 ```ts
@@ -223,13 +269,15 @@ Tests reproduce the PHP reference implementations from the docs verbatim and ver
 ✅ Implemented
 - HMAC-SHA256 request signing
 - MD5 webhook verification (constant-time)
-- TypeScript types for createOrder
+- TypeScript types for all endpoints
+- Endpoints: `createOrder`, `balance`, `checkOrder`, `listOrders`
+- Status helpers (`isOrderPaid`, `isOrderPending`, ...)
 - Test-mode handling
 - grammY bot example
 
 🚧 Not yet (PRs welcome)
-- `balance` / `check-order` / `list-orders` endpoints
 - `createWithdrawal` (payouts)
+- `listShops` / `rates`
 - Sandbox mode
 - Webhook retry/dead-letter helper
 

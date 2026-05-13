@@ -2,6 +2,9 @@
 // Sources verified 2026-05-14:
 //   https://tegro.money/docs/en/api/
 //   https://tegro.money/docs/en/api/create-order/
+//   https://tegro.money/docs/en/api/balance/
+//   https://tegro.money/docs/en/api/check-order/
+//   https://tegro.money/docs/en/api/list-orders/
 //   https://tegro.money/docs/en/payments/notify/
 //   https://tegro.money/docs/en/payments/signature/
 
@@ -40,6 +43,65 @@ export interface CreateOrderResponse {
   id: number;
   /** Hosted payment URL — redirect the user here. */
   url: string;
+}
+
+/** Balance response — multi-currency wallet snapshot for the merchant account. */
+export interface BalanceResponse {
+  /** Tegro internal user id (owner of the wallet). */
+  user_id: number;
+  /** Amounts are decimal strings (don't coerce to number for accounting precision). */
+  balance: {
+    RUB?: string;
+    USD?: string;
+    EUR?: string;
+    UAH?: string;
+  } & Record<string, string | undefined>;
+}
+
+/** Look up a single order — by Tegro `order_id` OR your own `payment_id`. */
+export interface CheckOrderRequest {
+  /** Tegro's order id (preferred when you have it). */
+  order_id?: number;
+  /** Your internal order id (the value you passed to createOrder as `orderId`). */
+  payment_id?: string;
+}
+
+/**
+ * Order status enum (per docs):
+ *   0 = new (created, awaiting payment)
+ *   1 = paid (successful)
+ *   2 = failed
+ *   3 = refunded
+ *   4 = pending (in processing)
+ *   ...
+ * Treat as opaque numbers and rely on the helpers below.
+ */
+export type OrderStatus = number;
+
+export interface OrderRecord {
+  id: number;
+  date_created: string;
+  date_payed: string | null;
+  status: OrderStatus;
+  payment_system_id: number;
+  currency_id: number;
+  /** Decimal string. */
+  amount: string;
+  /** Decimal string. */
+  fee: string;
+  email: string;
+  test_order: 0 | 1;
+  /** Your internal id (echoes what you passed as `orderId` on createOrder). */
+  payment_id: string;
+}
+
+export interface ListOrdersRequest {
+  /** Optional 1-based page index. */
+  page?: number;
+}
+
+export interface ListOrdersResponse {
+  items: OrderRecord[];
 }
 
 export interface TegroNotifyFields {

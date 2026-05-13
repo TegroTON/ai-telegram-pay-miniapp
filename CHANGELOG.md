@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.2.0 — 2026-05-14
+
+Three more endpoints + status helpers.
+
+- `TegroClient.balance()` — POST `/api/balance/`, returns multi-currency wallet (`RUB`, `USD`, `EUR`, `UAH`).
+- `TegroClient.checkOrder({ order_id } | { payment_id })` — POST `/api/order/`, returns one order with `status`, `amount`, `date_payed`, fee.
+- `TegroClient.listOrders({ page? })` — POST `/api/orders/`, paginated, wrapped as `{ items: OrderRecord[] }` so future fields (total / per_page) can be added without a breaking change.
+- Status helpers: `isOrderPaid`, `isOrderPending`, `isOrderFailed`, `isOrderRefunded` — keeps the documented numeric `status` enum out of consumer code.
+- Tests cover request shape, Bearer signature, error envelope, and the helpers.
+
+No breaking changes. Same signing scheme as 0.1.0.
+
 ## 0.1.0 — 2026-05-14
 
 Initial release.
