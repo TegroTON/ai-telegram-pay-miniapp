@@ -1,0 +1,5 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "enabled": false,
+  "description": "Dependency updates handled by Dependabot — see .github/dependabot.yml. This config silences Renovate to avoid duplicate PRs."
+}
