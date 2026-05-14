@@ -1,0 +1,40 @@
+name: Feature request
+description: Suggest a new endpoint, helper, or behavior.
+title: "[feature] "
+labels: ["enhancement", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for the suggestion. The library is intentionally minimal — the bar for adding surface area is high. Please read [CONTRIBUTING.md](../blob/main/CONTRIBUTING.md) before filing if you haven't yet.
+
+  - type: textarea
+    id: use-case
+    attributes:
+      label: Use case
+      description: What are you trying to do? Why does the current API not let you do it?
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed API
+      description: Sketch the function signature or behavior you'd like to see. TypeScript is fine.
+      render: typescript
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: Workarounds you've tried, or other libraries that solve this.
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Checks
+      options:
+        - label: I searched existing issues and didn't find a duplicate.
+          required: true
+        - label: This is documented behavior of the upstream API I want to expose, not a custom abstraction.
+          required: false

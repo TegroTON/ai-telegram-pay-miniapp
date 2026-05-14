@@ -1,0 +1,67 @@
+name: Bug report
+description: Something is broken or behaves differently from the docs.
+title: "[bug] "
+labels: ["bug", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to file a bug.
+
+        **Security issues do not go here.** Use [private vulnerability reporting](https://github.com/TegroTON/ai-telegram-pay-miniapp/security/advisories/new) instead — see SECURITY.md.
+
+  - type: input
+    id: version
+    attributes:
+      label: Package version
+      description: From your `package.json` or `npm ls @tegroton/tegro-money`.
+      placeholder: "0.2.0"
+    validations:
+      required: true
+
+  - type: input
+    id: node
+    attributes:
+      label: Node.js version
+      description: Output of `node --version`.
+      placeholder: "v22.11.0"
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: What happened?
+      description: What did you expect, and what did you observe instead?
+      placeholder: |
+        I called `createOrder({ ... })` and expected …, but got …
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Minimal reproduction
+      description: |
+        A short snippet that reproduces the problem. Strip secrets before submitting.
+        If the bug requires a running webhook, a `curl` invocation is fine.
+      render: typescript
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant logs
+      description: Stack traces, console output, HTTP response bodies. Redact secrets.
+      render: text
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Checks
+      options:
+        - label: I searched existing issues and didn't find a duplicate.
+          required: true
+        - label: This is not a security issue (if it is, I will use private vulnerability reporting).
+          required: true

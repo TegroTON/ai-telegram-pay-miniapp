@@ -1,7 +1,13 @@
 # @tegroton/tegro-money
 
-[![npm](https://img.shields.io/npm/v/@tegroton/tegro-money.svg)](https://www.npmjs.com/package/@tegroton/tegro-money)
-[![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+[![npm version](https://img.shields.io/npm/v/@tegroton/tegro-money.svg?logo=npm&label=npm)](https://www.npmjs.com/package/@tegroton/tegro-money)
+[![npm downloads](https://img.shields.io/npm/dm/@tegroton/tegro-money.svg)](https://www.npmjs.com/package/@tegroton/tegro-money)
+[![CI](https://img.shields.io/github/actions/workflow/status/TegroTON/ai-telegram-pay-miniapp/ci.yml?branch=main&label=CI&logo=github)](https://github.com/TegroTON/ai-telegram-pay-miniapp/actions/workflows/ci.yml)
+[![CodeQL](https://img.shields.io/github/actions/workflow/status/TegroTON/ai-telegram-pay-miniapp/codeql.yml?branch=main&label=CodeQL&logo=github)](https://github.com/TegroTON/ai-telegram-pay-miniapp/actions/workflows/codeql.yml)
+[![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+[![Node](https://img.shields.io/node/v/@tegroton/tegro-money.svg)](https://nodejs.org)
+[![TypeScript](https://img.shields.io/badge/types-included-3178c6?logo=typescript&logoColor=white)](src/index.ts)
+[![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-fa6673)](https://www.conventionalcommits.org)
 
 Production-ready Tegro.Money integration for Telegram bots. Two helpers, zero magic:
 
@@ -11,7 +17,7 @@ Production-ready Tegro.Money integration for Telegram bots. Two helpers, zero ma
 Plus a working **grammY bot** example that ties them together end-to-end.
 
 > **Status:** verified against the official spec at `tegro.money/docs/en/` on 2026-05-14.
-> Used in production by [Libermall Card](https://card.libermall.com).
+> Used in production by a Telegram Mini App processing RUB/СБП payments.
 
 ---
 
@@ -292,7 +298,7 @@ Tests reproduce the PHP reference implementations from the docs verbatim and ver
 
 Because the alternative is everyone writing their own buggy MD5 logic. Take the code, ship your project. Acknowledgement nice but not required.
 
-PRs welcome at [github.com/DeFiTON/@tegroton/tegro-money](https://github.com/DeFiTON/@tegroton/tegro-money).
+PRs welcome at [github.com/TegroTON/ai-telegram-pay-miniapp](https://github.com/TegroTON/ai-telegram-pay-miniapp). Please read [CONTRIBUTING.md](CONTRIBUTING.md) first.
 
 ---
 
@@ -300,4 +306,18 @@ PRs welcome at [github.com/DeFiTON/@tegroton/tegro-money](https://github.com/DeF
 
 - [Tegro.Money official docs](https://tegro.money/docs/en/) — authoritative source for endpoint behaviour.
 - [grammY](https://grammy.dev/) — modern Telegram bot framework used in the example.
-- [Libermall Card](https://card.libermall.com) — reference production deployment.
+- A production Telegram Mini App — reference deployment.
+
+---
+
+## Security
+
+If you find a vulnerability, **do not open a public issue**. Use [GitHub Private Vulnerability Reporting](https://github.com/TegroTON/ai-telegram-pay-miniapp/security/advisories/new) instead. Full policy, supported versions, scope, and SLA are in [SECURITY.md](SECURITY.md).
+
+## Contributing
+
+PRs are welcome. The library is intentionally minimal — see [CONTRIBUTING.md](CONTRIBUTING.md) for what we accept, how to set up locally, and the commit-message convention. New runtime dependencies are a hard sell; tests for new behavior are mandatory.
+
+## Changelog
+
+Versioned by [Semantic Versioning](https://semver.org/). All notable changes are in [CHANGELOG.md](CHANGELOG.md). Releases are tagged `v<MAJOR>.<MINOR>.<PATCH>` and trigger an automatic npm publish.

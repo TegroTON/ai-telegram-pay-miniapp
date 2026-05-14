@@ -1,0 +1,11 @@
+# Every PR is implicitly assigned to the maintainer below.
+# See https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+
+*       @DeFiTON
+
+# Security-sensitive paths get a louder ping. They map to the same owner today —
+# split into a team when more reviewers are onboarded.
+/src/client.ts     @DeFiTON
+/src/webhook.ts    @DeFiTON
+/.github/          @DeFiTON
+SECURITY.md        @DeFiTON
