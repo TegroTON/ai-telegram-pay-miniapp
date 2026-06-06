@@ -321,3 +321,14 @@ PRs are welcome. The library is intentionally minimal — see [CONTRIBUTING.md](
 ## Changelog
 
 Versioned by [Semantic Versioning](https://semver.org/). All notable changes are in [CHANGELOG.md](CHANGELOG.md). Releases are tagged `v<MAJOR>.<MINOR>.<PATCH>` and trigger an automatic npm publish.
+
+
+## 🌐 Tegro Ecosystem
+
+Part of the open-source **Tegro** DeFi & Web3 ecosystem on TON:
+
+- 💳 **Payments (Tegro Money)** — https://tegro.money · [API docs](https://tegro.money/docs/en/api/)
+- 🔁 **DEX (Tegro Finance)** — https://tegro.finance
+- 👛 **Wallet** — https://t.me/TegroMoneyBot
+- 💬 **Community** — https://t.me/TegroMoney
+- 🏠 **All open-source repos** — https://github.com/TegroTON
